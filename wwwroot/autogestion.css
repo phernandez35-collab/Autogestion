@@ -1,0 +1,153 @@
+:root {
+    --ag-bg: #14161a;
+    --ag-surface: #1c1f25;
+    --ag-line: #323843;
+    --ag-text: #e8eaed;
+    --ag-muted: #8d95a1;
+    --ag-accent: #e8a93b;
+    --ag-accent-ink: #1a1407;
+    --ag-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ag-body: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: var(--ag-bg);
+    --bs-body-color: var(--ag-text);
+    --bs-body-font-family: var(--ag-body);
+    --bs-border-color: var(--ag-line);
+    --bs-secondary-color: var(--ag-muted);
+    --bs-tertiary-bg: var(--ag-surface);
+    --bs-link-color-rgb: 232, 169, 59;
+    --bs-link-hover-color-rgb: 240, 192, 106;
+}
+
+h1, h2, h3, h4 { font-family: var(--ag-display); font-weight: 700; letter-spacing: .01em; }
+
+.ag-container { width: min(1140px, 100% - 2rem); margin-inline: auto; }
+.ag-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.ag-main { flex: 1; }
+
+.ag-header { position: sticky; top: 0; z-index: 10; background: var(--ag-bg); border-bottom: 2px solid var(--ag-line); }
+.ag-header-inner { display: flex; align-items: stretch; justify-content: space-between; gap: 1.5rem; min-height: 64px; }
+.ag-brand { display: flex; align-items: center; gap: .6rem; font-family: var(--ag-display); font-size: 1.8rem; font-weight: 700; color: var(--ag-text); text-decoration: none; }
+.ag-brand i { color: var(--ag-accent); }
+.ag-nav { display: flex; align-items: stretch; gap: .25rem; overflow-x: auto; }
+.ag-nav-link { display: flex; align-items: center; gap: .5rem; padding: 0 .9rem; margin-bottom: -2px; color: var(--ag-muted); text-decoration: none; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; }
+.ag-nav-link:hover { color: var(--ag-text); }
+.ag-nav-link.active { color: var(--ag-text); border-bottom-color: var(--ag-accent); }
+.ag-nav-link:focus-visible, .ag-brand:focus-visible, .ag-btn:focus-visible, .ag-footer a:focus-visible { outline: 2px solid var(--ag-accent); outline-offset: 2px; }
+
+.ag-hero { position: relative; isolation: isolate; padding: 5.5rem 0; overflow: hidden; border-bottom: 1px solid var(--ag-line); }
+.ag-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.ag-hero::after { content: ""; position: absolute; inset: 0; background: rgba(20, 22, 26, .82); z-index: -1; }
+.ag-hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); text-transform: uppercase; line-height: 1; margin-bottom: 1.25rem; }
+.ag-hero p { max-width: 60ch; color: #c9cdd3; }
+.ag-lead { font-size: 1.25rem; color: var(--ag-text) !important; }
+.ag-btn { display: inline-block; margin-top: 1rem; padding: .7rem 1.5rem; background: var(--ag-accent); color: var(--ag-accent-ink); font-weight: 600; text-decoration: none; border-radius: 4px; }
+.ag-btn:hover { background: #f0bd62; color: var(--ag-accent-ink); }
+
+.ag-section { padding-top: 3.5rem; }
+.ag-section-title { font-size: 2rem; padding-bottom: .6rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--ag-line); }
+.ag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.ag-card { background: var(--ag-surface); border: 1px solid var(--ag-line); border-radius: 6px; padding: 1.5rem; }
+.ag-card-icon { font-size: 1.8rem; color: var(--ag-accent); }
+.ag-card h3 { font-size: 1.45rem; margin: .75rem 0 .5rem; }
+.ag-card p { color: var(--ag-muted); }
+.ag-tag { display: inline-block; font-size: .78rem; padding: .2rem .6rem; border: 1px solid var(--ag-line); border-radius: 3px; color: var(--ag-muted); }
+.ag-prose { max-width: 70ch; color: #c9cdd3; }
+
+.ag-footer { margin-top: 4.5rem; background: var(--ag-surface); border-top: 2px solid var(--ag-line); color: var(--ag-muted); font-size: .92rem; }
+.ag-footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.4fr; gap: 2.5rem; padding: 2.5rem 0; }
+.ag-footer h2 { font-size: 1.9rem; color: var(--ag-text); margin-bottom: .75rem; }
+.ag-footer h3 { font-family: var(--ag-body); font-size: .85rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ag-text); margin-bottom: 1rem; }
+.ag-footer p { margin-bottom: .6rem; }
+.ag-footer strong { color: var(--ag-text); font-weight: 600; }
+.ag-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+.ag-footer a { color: var(--ag-text); text-decoration: none; }
+.ag-footer a:hover { color: var(--ag-accent); }
+.ag-footer-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding: 1rem 0 1.25rem; border-top: 1px solid var(--ag-line); font-size: .85rem; }
+
+@media (max-width: 768px) {
+    .ag-header-inner { flex-direction: column; gap: 0; }
+    .ag-brand { padding: .75rem 0 .25rem; }
+    .ag-nav-link { padding: .75rem .9rem; }
+    .ag-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+.ag-page-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+    .ag-page-head h1 {
+        font-size: 2.6rem;
+        margin: 0;
+    }
+
+button.ag-btn {
+    margin-top: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.ag-btn-ghost {
+    padding: .7rem 1.5rem;
+    background: transparent;
+    color: var(--ag-text);
+    border: 1px solid var(--ag-line);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .ag-btn-ghost:hover {
+        border-color: var(--ag-muted);
+    }
+
+.ag-panel {
+    background: var(--ag-surface);
+    border: 1px solid var(--ag-line);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.ag-panel-flush {
+    padding: 0;
+    overflow-x: auto;
+}
+
+    .ag-panel-flush .table {
+        margin: 0;
+        --bs-table-bg: transparent;
+    }
+
+.ag-icon-btn {
+    background: none;
+    border: 0;
+    padding: .35rem .5rem;
+    color: var(--ag-muted);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .ag-icon-btn:hover {
+        color: var(--ag-accent);
+    }
+
+    .ag-icon-btn.ag-danger:hover {
+        color: #ef6b6b;
+    }
+
+    .ag-icon-btn:focus-visible, .ag-btn-ghost:focus-visible {
+        outline: 2px solid var(--ag-accent);
+        outline-offset: 2px;
+    }
+
+.form-control:focus {
+    border-color: var(--ag-accent);
+    box-shadow: 0 0 0 .2rem rgba(232, 169, 59, .25);
+}

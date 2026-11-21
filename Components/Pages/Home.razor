@@ -1,0 +1,57 @@
+@page "/"
+
+<PageTitle>AutoGestión</PageTitle>
+
+<section class="ag-hero">
+    <img src="https://images.unsplash.com/photo-1771340012319-0b4fca008b54?fm=jpg&q=60&w=1600&auto=format&fit=crop"
+         alt="Interior de un taller mecánico" />
+    <div class="ag-container">
+        <h1>Bienvenido a AutoGestión</h1>
+        <p class="ag-lead">
+            Sistema web para la gestión operativa de talleres mecánicos automotrices.
+        </p>
+        <p>
+            Organiza clientes, vehículos y órdenes de reparación en un solo lugar
+            y da seguimiento a cada servicio realizado en el taller.
+        </p>
+        <a class="ag-btn" href="clientes">Comenzar</a>
+    </div>
+</section>
+
+<section class="ag-container ag-section">
+    <h2 class="ag-section-title">Módulos del sistema</h2>
+    <div class="ag-grid">
+        @foreach (var m in modulos)
+        {
+            <article class="ag-card">
+                <i class="bi @m.Icono ag-card-icon" aria-hidden="true"></i>
+                <h3>@m.Titulo</h3>
+                <p>@m.Descripcion</p>
+                <span class="ag-tag">Próximamente disponible</span>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="ag-container ag-section">
+    <h2 class="ag-section-title">¿Por qué centralizar la información del taller?</h2>
+    <p class="ag-prose">
+        Contar con la información en un solo sistema permite mantener mejor organizados
+        a los clientes y sus vehículos, dar seguimiento oportuno a cada reparación,
+        conservar el historial de mantenimientos de cada unidad y llevar un control claro
+        de las órdenes de trabajo generadas día con día.
+    </p>
+</section>
+
+@code {
+    private record Modulo(string Icono, string Titulo, string Descripcion);
+
+    private readonly Modulo[] modulos =
+    {
+        new("bi-people", "Gestión de clientes", "Administra los datos de los clientes del taller y su historial de servicios."),
+        new("bi-car-front", "Gestión de vehículos", "Registra los vehículos atendidos con sus datos y antecedentes de mantenimiento."),
+        new("bi-wrench-adjustable", "Órdenes de reparación", "Crea y controla las órdenes de trabajo generadas para cada vehículo."),
+        new("bi-clipboard-check", "Seguimiento de servicios", "Consulta el estado de cada servicio, desde su ingreso hasta su entrega."),
+        new("bi-bar-chart-line", "Reportes", "Visualiza reportes operativos y financieros sobre la actividad del taller.")
+    };
+}
